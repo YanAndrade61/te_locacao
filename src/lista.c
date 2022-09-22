@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 #include "lista.h"
 
 
 /*Cria lista vazia*/
-void criaL(Lista* l){
+Lista* criaL(){
+    Lista* l = (Lista*)calloc(1,sizeof(Lista));
     l->primeiro = (Celula*)malloc(sizeof(Celula));
     l->ultimo=l->primeiro;
     l->ultimo->prox = NULL;
+    return l;
 }
 
 /*Verifica se a lista esta vazia*/
@@ -21,6 +24,7 @@ void insereI(Locacao x,Lista* l){
     l->ultimo->prox = (Celula*)malloc(sizeof(Celula));
     l->ultimo = l->ultimo->prox;
     l->ultimo->c = x;
+    l->ultimo->c.carros.carros = x.carros.carros;
     l->ultimo->prox = NULL; 
 }
 
@@ -55,13 +59,21 @@ void destroiL(Lista* l){
 /*Imprime lista no terminal*/
 void imprimeL(Lista* l){
 
+    
     Celula* auxC = l->primeiro->prox;
+    printf("Locacoes:\n");
 
     while(auxC != NULL)
     {
-        printf("Locacoes:\n");
+        printf("---------------------\n");
         printf("%s %s %s\n",auxC->c.name,auxC->c.date,auxC->c.time);
         printCarros(auxC->c.carros);
         auxC = auxC->prox;
     }
+    printf("Press enter to continue...\n");
+    
+    //Limpar buffer
+    int c;
+    while((c = getchar() )!= '\n' && c != EOF);
+    scanf("%lc",&c);
 }

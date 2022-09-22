@@ -12,7 +12,6 @@ typedef struct locacao{
     char name[100];
     char date[12];
     char time[12];
-    int qtd;
     LstCarros carros;
 
 }Locacao;
@@ -33,7 +32,7 @@ struct lista{
 };
 
 int vaziaL(Lista);
-void criaL(Lista*);
+Lista* criaL();
 void insereI(Locacao, Lista*);
 void retiraI(Celula*, Lista*, Locacao*);
 void destroiL(Lista*);

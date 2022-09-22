@@ -1,6 +1,6 @@
 CFLAGS := -Wall -Wextra -iquote ./include
 DEFS := -D NONE
-NAME := sudoku
+NAME := locadora
 
 SRC_DIR := src
 OBJ_DIR := obj

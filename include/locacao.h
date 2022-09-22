@@ -7,6 +7,7 @@
 // typedef struct locacao Locacao;
 
 void locacaoSystem(LstCarros* carros);
+void pesquisarMenu(LstCarros* carros);
 
 
 #endif
